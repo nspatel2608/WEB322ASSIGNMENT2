@@ -1,0 +1,21 @@
+{
+  "name": "web322assignment2",
+  "version": "1.0.0",
+  "description": "WEB322 Assignment 2 - Tailwind + EJS setup",
+  "main": "server.js",
+  "scripts": {
+    "tw:build": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch",
+    "start": "node server.js"
+  },
+  "author": "Neel S Patel",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "daisyui": "^4.1.1",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

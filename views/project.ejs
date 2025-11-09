@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= project.title %> - Climate Solutions</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body tabIndex="-1">
+  <%- include('partials/navbar', { page: '' }) %>
+
+  <main class="container mx-auto p-6">
+    <!-- Hero Header -->
+    <div class="hero min-h-[40vh] bg-base-200 rounded-box mb-10">
+      <div class="hero-content text-center">
+        <div class="max-w-xl">
+          <h1 class="text-4xl font-bold"><%= project.title %></h1>
+          <p class="py-4 text-lg">
+            Below, you will find detailed information about the project:
+            <strong><%= project.title %></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Card -->
+    <div class="card bg-base-100 shadow-xl mb-10">
+      <figure>
+        <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="w-full rounded-t-xl" />
+      </figure>
+
+      <div class="card-body">
+        <h2 class="card-title"><%= project.title %></h2>
+        <p class="text-base-content/80 mb-4"><%= project.intro_short %></p>
+
+        <div class="divider"></div>
+
+        <h3 class="text-xl font-semibold mb-2">Impact</h3>
+        <p class="text-base-content/70 mb-4"><%= project.impact %></p>
+
+        <a href="<%= project.original_source_url %>" target="_blank" class="btn btn-outline btn-primary">
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <!-- Random Quote Section -->
+    <div id="quote-box" class="text-center my-10">
+      <p class="italic text-lg mb-2" id="quote-text"></p>
+      <p class="text-base-content/60" id="quote-author"></p>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center">
+      <a href="#" onclick="history.back(); return false;" class="btn btn-accent">← Back to Projects</a>
+    </div>
+  </main>
+
+  <!-- Fetch Random Quote -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("https://dummyjson.com/quotes/random")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("quote-text").textContent = `"${data.quote}"`;
+          document.getElementById("quote-author").textContent = `— ${data.author}`;
+        })
+        .catch(() => {
+          document.getElementById("quote-text").textContent = "Failed to load quote 😔";
+        });
+    });
+  </script>
+</body>
+</html>

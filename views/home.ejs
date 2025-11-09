@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+  <body tabIndex="-1">
+    <%- include('partials/navbar', { page: '/' }) %>
+
+    <main class="container mx-auto p-6">
+      <div class="hero min-h-[60vh] bg-base-200 rounded-box mb-10">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-4xl font-bold">Welcome to Climate Solutions 🌎</h1>
+            <p class="py-4 text-lg">
+              Explore innovative environmental projects that help build a sustainable future.
+            </p>
+            <a href="/projects" class="btn btn-primary">View Projects</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card bg-base-100 shadow-xl">
+          <figure><img src="https://placehold.co/400x250" alt="Solar Project" /></figure>
+          <div class="card-body">
+            <h2 class="card-title">Solar Power Expansion</h2>
+            <p>Harnessing renewable energy for rural communities.</p>
+            <a href="/projects" class="btn btn-outline btn-primary">Learn More</a>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure><img src="https://placehold.co/400x250" alt="Wind Energy" /></figure>
+          <div class="card-body">
+            <h2 class="card-title">Wind Energy Efficiency</h2>
+            <p>Improving turbine performance and reducing carbon emissions.</p>
+            <a href="/projects" class="btn btn-outline btn-primary">Learn More</a>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure><img src="https://placehold.co/400x250" alt="Reforestation" /></figure>
+          <div class="card-body">
+            <h2 class="card-title">Reforestation Program</h2>
+            <p>Planting trees and restoring ecosystems around the world.</p>
+            <a href="/projects" class="btn btn-outline btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

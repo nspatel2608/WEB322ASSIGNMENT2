@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+  <body tabIndex="-1">
+    <%- include('partials/navbar', { page: '/about' }) %>
+
+    <main class="container mx-auto p-6">
+      <div class="hero bg-base-200 rounded-box mb-10">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-4xl font-bold">About Me</h1>
+            <p class="py-4 text-lg">
+              Hi, I’m <strong>Neel S Patel</strong> (ID: 190822239). I’m a Computer Programming student at
+              Seneca Polytechnic, passionate about web development and UI design.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <img class="rounded-2xl shadow-xl" src="https://placehold.co/500x350?text=My+Photo" alt="Neel Patel" />
+        <div>
+          <h2 class="text-2xl font-semibold mb-2">About This Project</h2>
+          <p>
+            This project demonstrates the use of <b>Tailwind CSS</b> and <b>daisyUI</b> to create a clean,
+            responsive user interface for climate-related solutions. The goal is to make web design both fast
+            and beautiful without writing manual CSS.
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

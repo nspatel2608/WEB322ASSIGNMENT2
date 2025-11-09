@@ -1,0 +1,6 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* DaisyUI + Typography plugins */
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";

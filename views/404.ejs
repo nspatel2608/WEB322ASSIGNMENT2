@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+  <body tabIndex="-1">
+    <!-- Navbar -->
+    <%- include('partials/navbar', { page: '' }) %>
+
+    <!-- Main 404 Section -->
+    <main class="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">
+      <h1 class="text-7xl font-bold text-error mb-4">404</h1>
+
+      <p class="text-lg mb-6 text-base-content/80">
+        <%= message || "I'm sorry, we're unable to find what you're looking for." %>
+      </p>
+
+      <a href="/" class="btn btn-primary">Go Home</a>
+    </main>
+  </body>
+</html>

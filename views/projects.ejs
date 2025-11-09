@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+  <body tabIndex="-1">
+    <!-- Navbar -->
+    <%- include('partials/navbar', { page: '/solutions/projects' }) %>
+
+    <main class="container mx-auto p-6">
+      <!-- Hero Section -->
+      <div class="hero bg-base-200 rounded-box mb-10">
+        <div class="hero-content text-center">
+          <div>
+            <h1 class="text-4xl font-bold mb-4">Climate Projects 🌍</h1>
+            <p class="text-lg mb-4">
+              Browse our collection of sustainable initiatives below.  
+              Filter by sector using the quick links:
+            </p>
+            <div class="flex flex-wrap justify-center gap-2">
+              <a href="/solutions/projects" class="btn btn-sm btn-outline">All</a>
+              <a href="/solutions/projects?sector=industry" class="btn btn-sm btn-outline btn-primary">Industry</a>
+              <a href="/solutions/projects?sector=transportation" class="btn btn-sm btn-outline btn-primary">Transportation</a>
+              <a href="/solutions/projects?sector=energy" class="btn btn-sm btn-outline btn-primary">Energy</a>
+              <a href="/solutions/projects?sector=agriculture" class="btn btn-sm btn-outline btn-primary">Agriculture</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Table -->
+      <% if (projects && projects.length > 0) { %>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra w-full">
+            <thead>
+              <tr class="text-lg">
+                <th>Title</th>
+                <th>Sector</th>
+                <th>Summary</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% projects.forEach(project => { %>
+                <tr>
+                  <td class="font-bold"><%= project.title %></td>
+                  <td>
+                    <a href="/solutions/projects?sector=<%= project.sector.toLowerCase() %>" 
+                       class="btn btn-xs btn-outline btn-primary capitalize">
+                      <%= project.sector %>
+                    </a>
+                  </td>
+                  <td><%= project.summary_short %></td>
+                  <td>
+                    <a href="/solutions/projects/<%= project.id %>" 
+                       class="btn btn-xs btn-secondary">
+                      Details
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <div class="text-center text-lg text-error py-10">
+          No projects found for this sector.
+        </div>
+      <% } %>
+    </main>
+  </body>
+</html>
