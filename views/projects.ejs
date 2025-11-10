@@ -23,10 +23,10 @@
             </p>
             <div class="flex flex-wrap justify-center gap-2">
               <a href="/solutions/projects" class="btn btn-sm btn-outline">All</a>
-              <a href="/solutions/projects?sector=industry" class="btn btn-sm btn-outline btn-primary">Industry</a>
-              <a href="/solutions/projects?sector=transportation" class="btn btn-sm btn-outline btn-primary">Transportation</a>
-              <a href="/solutions/projects?sector=energy" class="btn btn-sm btn-outline btn-primary">Energy</a>
-              <a href="/solutions/projects?sector=agriculture" class="btn btn-sm btn-outline btn-primary">Agriculture</a>
+              <a href="/solutions/projects?sector=Industry" class="btn btn-sm btn-outline btn-primary">Industry</a>
+              <a href="/solutions/projects?sector=Transportation" class="btn btn-sm btn-outline btn-primary">Transportation</a>
+              <a href="/solutions/projects?sector=Electricity" class="btn btn-sm btn-outline btn-primary">Energy</a>
+              <a href="/solutions/projects?sector=Food, Agriculture, and Land Use" class="btn btn-sm btn-outline btn-primary">Agriculture</a>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
                 <tr>
                   <td class="font-bold"><%= project.title %></td>
                   <td>
-                    <a href="/solutions/projects?sector=<%= project.sector.toLowerCase() %>" 
+                    <a href="/solutions/projects?sector=<%= project.sector %>" 
                        class="btn btn-xs btn-outline btn-primary capitalize">
                       <%= project.sector %>
                     </a>

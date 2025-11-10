@@ -11,10 +11,10 @@
 
 const express = require("express");
 const path = require("path");
-const projectData = require("./modules/projects"); // make sure modules/projects.js exists
+const projectData = require("./modules/projects");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // ---------- VIEW ENGINE & STATIC FILES ---------- //
 app.set("view engine", "ejs");
@@ -45,7 +45,6 @@ app.get("/solutions/projects", async (req, res) => {
             projects = await projectData.getAllProjects();
         }
 
-        // Always send sector value to EJS
         res.render("projects", {
             page: "/solutions/projects",
             projects,

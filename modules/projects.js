@@ -1,22 +1,8 @@
-﻿/********************************************************************************
-*  WEB322 – Assignment 02
-*
-*  I declare that this assignment is my own work in accordance with Seneca's
-*  Academic Integrity Policy:
-*  https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
-*
-*  Name: Neel S Patel   Student ID: 190822239   Date: 2025-11-09
-*
-********************************************************************************/
-
-const projectData = require("../data/projectData");
+﻿const projectData = require("../data/projectData");
 const sectorData = require("../data/sectorData");
 
 let projects = [];
 
-// -----------------------------------------------------------------------------
-// Initialize the project list by mapping sector IDs to sector names
-// -----------------------------------------------------------------------------
 function initialize() {
     return new Promise((resolve, reject) => {
         try {
@@ -24,45 +10,31 @@ function initialize() {
                 const sector = sectorData.find((s) => s.id === p.sector_id);
                 return { ...p, sector: sector ? sector.sector_name : "Unknown" };
             });
-
-            console.log(
-                "✅ Data initialized with sectors:",
-                [...new Set(projects.map((p) => p.sector))].join(", ")
-            );
-
             resolve();
         } catch (err) {
-            reject("❌ Initialization failed: " + err);
+            reject("Initialization failed");
         }
     });
 }
 
-// -----------------------------------------------------------------------------
-// Return all projects
-// -----------------------------------------------------------------------------
 function getAllProjects() {
-    return new Promise((resolve, reject) => {
-        if (projects.length > 0) resolve(projects);
-        else reject("No projects available");
-    });
+    return new Promise((resolve) => resolve(projects));
 }
 
-// -----------------------------------------------------------------------------
-// Return project by ID
-// -----------------------------------------------------------------------------
 function getProjectById(projectId) {
     return new Promise((resolve, reject) => {
         const idNum = Number(projectId);
-        const item = projects.find((p) => p.id === idNum);
+        if (isNaN(idNum)) {
+            reject("Invalid project ID");
+            return;
+        }
 
+        const item = projects.find((p) => p.id === idNum);
         if (item) resolve(item);
-        else reject(`Unable to find project with id: ${projectId}`);
+        else reject("Unable to find requested project");
     });
 }
 
-// -----------------------------------------------------------------------------
-// Return all projects filtered by sector (case-insensitive + trimmed)
-// -----------------------------------------------------------------------------
 function getProjectsBySector(sector) {
     return new Promise((resolve, reject) => {
         if (!sector || typeof sector !== "string") {
@@ -70,10 +42,16 @@ function getProjectsBySector(sector) {
             return;
         }
 
+        // ✅ Optional mapping for friendly URLs
+        const sectorMap = {
+            energy: "Electricity",
+            agriculture: "Food, Agriculture, and Land Use",
+        };
+
+        const searchSector = sectorMap[sector.toLowerCase()] || sector;
+
         const filtered = projects.filter(
-            (p) =>
-                p.sector &&
-                p.sector.trim().toLowerCase() === sector.trim().toLowerCase()
+            (p) => p.sector && p.sector.toLowerCase() === searchSector.toLowerCase()
         );
 
         if (filtered.length > 0) resolve(filtered);
@@ -81,12 +59,5 @@ function getProjectsBySector(sector) {
     });
 }
 
-// -----------------------------------------------------------------------------
-// Export functions
-// -----------------------------------------------------------------------------
-module.exports = {
-    initialize,
-    getAllProjects,
-    getProjectById,
-    getProjectsBySector,
-};
+// ✅ Correctly close the export object
+module.exports = { initialize, getAllProjects, getProjectById, getProjectsBySector };
